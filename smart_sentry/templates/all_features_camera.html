@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+    <main>
+        <div class="container-fluid">
+            <div class="card mb-4">
+                <div class="card-header">
+                   <i class="far fa-file-video"></i>
+                    Video
+                </div>
+                <div class="card-body col-lg-8  offset-lg-2">
+                    <img src="{{ url_for('ml_api.video_feed_all') }}" width="100%">
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
