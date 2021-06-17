@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block content %}
+    <main>
+        <div class="container-fluid">
+            <div class="card mb-4">
+                <div class="card-header">
+                   <i class="far fa-file-video"></i>
+                    Result Video
+                </div>
+                <div class="card-body">
+                    <video width="auto" height="500px" controls>
+                      <source src="{{ url_for('static',filename='files/' + filename) }}" type="video/webm">
+                      Your browser does not support HTML video.
+                    </video>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-header">
+                   <i class="far fa-file-video"></i>
+                    Try another video
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="" enctype="multipart/form-data">
+                        {{ form.hidden_tag() }}
+                        <fieldset class="form-group">
+                            <div class="form-group">
+                                {{ form.video.label(class="form-label") }}
+                                {% if form.video.errors %}
+                                    {{ form.video(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.video.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.video(class="form-control", type="file") }}
+                                {% endif %}
+                            </div>
+                            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                {{ form.submit(class="btn btn-primary") }}
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}
